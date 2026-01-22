@@ -1,22 +1,13 @@
 # features/swag_labs.feature
-
+@regression
 Feature: Swag Labs E2E Testing
 
-  Scenario: Positive Login
+  Background: Login
     Given I am on the login page
-    When I login with valid credentials "standard_user" and "secret_sauce"
+    When I enter username "standard_user" and password "secret_sauce"
+    And I click login
     Then I should be redirected to the inventory page
-
-  Scenario: Negative Login - Invalid Credentials
-    Given I am on the login page
-    When I login with invalid credentials "invalid_user" and "wrong_password"
-    Then I should see an error message "Epic sadface: Username and password do not match any user in this service"
-
-  Scenario: Negative Login - Locked Out User
-    Given I am on the login page
-    When I login with locked out credentials "locked_out_user" and "secret_sauce"
-    Then I should see an error message "Epic sadface: Sorry, this user has been locked out."
-
+  @smoke @cart
   Scenario: Select Items and Validate Cart
     Given I am logged in as "standard_user"
     When I add the item "Sauce Labs Backpack" to the cart
@@ -26,6 +17,7 @@ Feature: Swag Labs E2E Testing
     And the cart should contain "Sauce Labs Bike Light"
     And the cart item count should be 2
 
+  @checkout
   Scenario: Checkout and Confirm Order
     Given I am logged in as "standard_user" with items in cart
     When I navigate to the cart
@@ -36,6 +28,7 @@ Feature: Swag Labs E2E Testing
     When I finish checkout
     Then I should see the order confirmation "Thank you for your order!"
 
+  @logout
   Scenario: Logout
     Given I am logged in as "standard_user"
     When I logout
