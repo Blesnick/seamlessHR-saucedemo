@@ -1,0 +1,35 @@
+{
+  "name": "seamlesshr-saucedemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open",
+    "cy:run": "cypress run",
+    "cy:run:headed": "cypress run --headed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blesnick/seamlessHR-saucedemo.git"
+  },
+  "cypress-cucumber-preprocessor": {
+    "filterspecs": true,
+    "ommitFiltered": true,
+    "stepDefinitions": "support/step_definitions/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Blesnick/seamlessHR-saucedemo/issues"
+  },
+  "homepage": "https://github.com/Blesnick/seamlessHR-saucedemo#readme",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "@types/node": "^25.0.10",
+    "cypress": "^15.9.0",
+    "typescript": "^5.9.3"
+  }
+}
